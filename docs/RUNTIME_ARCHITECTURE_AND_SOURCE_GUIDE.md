@@ -125,7 +125,7 @@ third_party/proton-runtime/src/vkd3d-proton
    - 不放 runtime 二进制、不放上游源码 checkout、不放游戏资源。
 
 2. `aetherium-wine-runtime`
-   - 建议新建。
+   - 当前使用仓库: https://github.com/caidingding233/aetherium-lite-runtime-using-wine-version-not-the-qemu-emulator-version
    - 许可证：mixed，不要写成单一 MIT。
    - 放 Wine/Proton/Box64/DXVK/vkd3d-proton 的精确 source refs、HarmonyOS patches、构建说明、对应源码归档、runtime release notes。
    - 如果发布修改过的 Wine 或 vkd3d-proton 二进制，这个仓库负责满足 LGPL 的对应源码要求。

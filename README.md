@@ -26,6 +26,7 @@ The following generated artifacts are local build products and are not part of t
 Run the scripts under `scripts/proton-runtime/` to recreate the local runtime payload from upstream sources.
 
 For the full runtime model, source checkout flow, and repository split, see `docs/RUNTIME_ARCHITECTURE_AND_SOURCE_GUIDE.md`.
+The Wine/Proton runtime recipe lives in https://github.com/caidingding233/aetherium-lite-runtime-using-wine-version-not-the-qemu-emulator-version.
 
 ## Licensing
 
