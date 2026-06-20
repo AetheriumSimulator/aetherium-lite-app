@@ -23,10 +23,17 @@ The following generated artifacts are local build products and are not part of t
 - `entry/src/main/resources/rawfile/win32-smoke/*.dll`
 - generated `.hap`, `.hsp`, `.app`, and `.har` files
 
-Run the scripts under `scripts/proton-runtime/` to recreate the local runtime payload from upstream sources.
+For a normal source checkout, run:
+
+```bash
+scripts/proton-runtime/bootstrap_runtime_sources.sh
+```
+
+That command syncs the runtime recipe repository, fetches the pinned upstream Proton/Wine/Box64/DXVK/vkd3d-proton sources, and applies the Aetherium source patches. If you only want the original pinned upstream checkouts without applying Aetherium patches, run `scripts/proton-runtime/fetch_sources.sh` directly.
 
 For the full runtime model, source checkout flow, and repository split, see `docs/RUNTIME_ARCHITECTURE_AND_SOURCE_GUIDE.md`.
 The Wine/Proton runtime recipe lives in https://github.com/caidingding233/aetherium-lite-runtime-using-wine-version-not-the-qemu-emulator-version.
+For end-to-end build steps, see `docs/BUILD_FROM_SOURCE.md`.
 
 ## Licensing
 

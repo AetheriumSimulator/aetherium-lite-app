@@ -66,27 +66,28 @@ HarmonyOS launcher
 ```bash
 git clone https://github.com/AetheriumSimulator/aetherium-lite-app.git
 cd aetherium-lite-app
-scripts/proton-runtime/fetch_sources.sh
-scripts/proton-runtime/audit_licenses.sh
+scripts/proton-runtime/bootstrap_runtime_sources.sh
 ```
 
 如果在 WSL 里需要代理：
 
 ```bash
-PROTON_RUNTIME_PROXY=http://172.21.16.1:7897 scripts/proton-runtime/fetch_sources.sh
+PROTON_RUNTIME_PROXY=http://172.21.16.1:7897 scripts/proton-runtime/bootstrap_runtime_sources.sh
 ```
 
 如果要连 Proton 子模块也完整拉下来：
 
 ```bash
-PROTON_RUNTIME_FETCH_SUBMODULES=1 scripts/proton-runtime/fetch_sources.sh
+PROTON_RUNTIME_FETCH_SUBMODULES=1 scripts/proton-runtime/bootstrap_runtime_sources.sh
 ```
 
 如果你想追上游分支最新，而不是使用当前项目记录的 verified commit：
 
 ```bash
-PROTON_RUNTIME_PINNED=0 scripts/proton-runtime/fetch_sources.sh
+PROTON_RUNTIME_PINNED=0 scripts/proton-runtime/bootstrap_runtime_sources.sh
 ```
+
+如果只运行 `scripts/proton-runtime/fetch_sources.sh`，它只会拉原始上游仓库的 pinned commits，不会自动套 Aetherium patch。完整复现路径是 `bootstrap_runtime_sources.sh`：先同步 runtime recipe 仓库，再拉上游源码，再应用 `source-patches`。
 
 源码会进入：
 
