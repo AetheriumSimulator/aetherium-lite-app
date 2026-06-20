@@ -25,6 +25,8 @@ The following generated artifacts are local build products and are not part of t
 
 Run the scripts under `scripts/proton-runtime/` to recreate the local runtime payload from upstream sources.
 
+For the full runtime model, source checkout flow, and repository split, see `docs/RUNTIME_ARCHITECTURE_AND_SOURCE_GUIDE.md`.
+
 ## Licensing
 
 The original Aetherium Lite app and bridge source in this repository is licensed under MIT. Third-party runtime components keep their own licenses. See `THIRD_PARTY_NOTICES.md` and `docs/OPEN_SOURCE.md` before publishing binaries or runtime builds.

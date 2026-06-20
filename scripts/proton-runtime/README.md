@@ -10,6 +10,8 @@ The HSP loads the runtime payload dynamically:
 - `resources/rawfile/runtime/proton/` is the materialized Valve Proton redist payload, including Wine, DXVK, vkd3d-proton, vkd3d, lsteamclient, vrclient, and the default prefix template.
 
 Run `scripts/proton-runtime/fetch_sources.sh` to place upstream sources under `third_party/proton-runtime/src/`.
+By default the helper checks out the verified commits recorded for this project. Set
+`PROTON_RUNTIME_PINNED=0` if you want to follow the upstream branch names instead.
 If WSL needs the Windows host proxy, pass it explicitly:
 
 ```bash
@@ -26,6 +28,12 @@ The default fetch skips submodules so the core source checkouts complete first. 
 
 ```bash
 PROTON_RUNTIME_PROXY=http://172.21.16.1:7897 PROTON_RUNTIME_FETCH_SUBMODULES=1 scripts/proton-runtime/fetch_sources.sh
+```
+
+Check the license files that came with the local source checkouts:
+
+```bash
+scripts/proton-runtime/audit_licenses.sh
 ```
 
 Build and install the current Box64 in-process payload:

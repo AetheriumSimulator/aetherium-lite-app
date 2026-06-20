@@ -30,6 +30,8 @@ Important examples:
 - DXVK is zlib/libpng style.
 - Proton distribution notices include many additional bundled licenses.
 
+The current HarmonyOS design loads key runtime pieces as in-process shared objects. That is fine architecturally, but it makes LGPL compliance more important for binary releases: publish the corresponding source and patches for LGPL-covered runtime libraries, keep notices with the binaries, and document how developers can rebuild or replace those runtime pieces. See `RUNTIME_ARCHITECTURE_AND_SOURCE_GUIDE.md` for the practical source checkout flow.
+
 ## Before Publishing Binaries
 
 - Generate a `NOTICE` bundle from the exact runtime payload being shipped.
