@@ -1,11 +1,12 @@
 {
   "name": "entry",
   "version": "1.0.0",
-  "description": "Please describe the basic information.",
+  "description": "Aetherium Lite HarmonyOS entry app.",
   "main": "",
   "author": "",
-  "license": "",
+  "license": "MIT",
   "dependencies": {
+    "proton": "file:../proton",
     "libentry.so": "file:./src/main/cpp/types/libentry"
   }
 }

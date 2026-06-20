@@ -1,4 +1,4 @@
-import { hapTasks } from '@ohos/hvigor-ohos-plugin';
+const { hapTasks } = require('C:/Program Files/Huawei/DevEco Studio/tools/hvigor/hvigor-ohos-plugin/index.js');
 
 export default {
   system: hapTasks, /* Built-in plugin of Hvigor. It cannot be modified. */

@@ -1,0 +1,26 @@
+diff --git a/src/tools/env.c b/src/tools/env.c
+index 15aab2d..dc2965a 100644
+--- a/src/tools/env.c
++++ b/src/tools/env.c
+@@ -368,7 +368,7 @@ static void internalApplyEnvFileEntry(const char* entryname, const box64env_t* e
+
+ static void internalApplyEnvFileEntry(const char* entryname, const box64env_t* env);
+
+-#ifdef ANDROID
++#if defined(ANDROID) && !defined(BOX64_HMOS)
+ static int shm_open(const char *name, int oflag, mode_t mode) {
+     return -1;
+ }
+diff --git a/src/wrapped/wrappedlibc.c b/src/wrapped/wrappedlibc.c
+index 0dce8fe..d5cfd0e 100644
+--- a/src/wrapped/wrappedlibc.c
++++ b/src/wrapped/wrappedlibc.c
+@@ -2250,7 +2250,7 @@ void CreateCpuCacheSize(int fd, int cpu, int index)
+     (void)dummy;
+ }
+
+-#ifdef ANDROID
++#if defined(ANDROID) && !defined(BOX64_HMOS)
+ static int shm_open(const char *name, int oflag, mode_t mode) {
+     return -1;
+ }

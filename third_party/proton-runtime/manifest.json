@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "description": "Upstream source set for the HarmonyOS Proton runtime payload. These repositories are fetched into third_party/proton-runtime/src and built into Proton.hsp native libraries.",
+  "outputLibraries": [
+    "libproton_hmos_runtime.so",
+    "libbox64_hmos.so",
+    "libwine_hmos.so",
+    "libdxvk_hmos.so",
+    "libvkd3d_proton_hmos.so"
+  ],
+  "sources": [
+    {
+      "name": "proton",
+      "url": "https://github.com/ValveSoftware/Proton.git",
+      "ref": "bleeding-edge",
+      "verifiedHead": "75fadb148aab81f3868224c5243beda68768eade",
+      "license": "BSD-3-Clause plus bundled third-party licenses"
+    },
+    {
+      "name": "box64",
+      "url": "https://github.com/ptitSeb/box64.git",
+      "ref": "main",
+      "verifiedHead": "3583d9c90e042694a5b0ac2511603ba8230c2316",
+      "license": "MIT"
+    },
+    {
+      "name": "wine",
+      "url": "https://github.com/wine-mirror/wine.git",
+      "ref": "master",
+      "verifiedHead": "2cac6ccf33c0807f374dc96f5a20e35a2da86157",
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "dxvk",
+      "url": "https://github.com/doitsujin/dxvk.git",
+      "ref": "master",
+      "verifiedHead": "be4ac08faa1ba7546193995ac6e45ca8c07763d4",
+      "license": "zlib"
+    },
+    {
+      "name": "vkd3d-proton",
+      "url": "https://github.com/HansKristian-Work/vkd3d-proton.git",
+      "ref": "master",
+      "verifiedHead": "110e8bd4ee09c40031f5513258a10df59d27fd94",
+      "license": "LGPL-2.1-or-later"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+diff --git a/src/include/fts.h b/src/include/fts.h
+new file mode 100644
+index 0000000..5105186
+--- /dev/null
++++ b/src/include/fts.h
+@@ -0,0 +1,90 @@
++#ifndef BOX64_HMOS_FTS_COMPAT_H
++#define BOX64_HMOS_FTS_COMPAT_H
++
++#include <errno.h>
++#include <stdint.h>
++#include <sys/stat.h>
++#include <sys/types.h>
++
++typedef struct _ftsent {
++    struct _ftsent *fts_cycle;
++    struct _ftsent *fts_parent;
++    struct _ftsent *fts_link;
++    long fts_number;
++    void *fts_pointer;
++    char *fts_accpath;
++    char *fts_path;
++    int fts_errno;
++    int fts_symfd;
++    uint16_t fts_pathlen;
++    uint16_t fts_namelen;
++    ino_t fts_ino;
++    dev_t fts_dev;
++    nlink_t fts_nlink;
++    int16_t fts_level;
++    uint16_t fts_info;
++    uint16_t fts_flags;
++    uint16_t fts_instr;
++    struct stat *fts_statp;
++    char fts_name[1];
++} FTSENT;
++
++typedef struct _fts {
++    FTSENT *current;
++} FTS;
++
++#define FTS_D 1
++#define FTS_DC 2
++#define FTS_DEFAULT 3
++#define FTS_DNR 4
++#define FTS_DOT 5
++#define FTS_DP 6
++#define FTS_ERR 7
++#define FTS_F 8
++#define FTS_INIT 9
++#define FTS_NS 10
++#define FTS_NSOK 11
++#define FTS_SL 12
++#define FTS_SLNONE 13
++#define FTS_W 14
++
++#define FTS_AGAIN 1
++#define FTS_FOLLOW 2
++#define FTS_NOINSTR 3
++#define FTS_SKIP 4
++
++static inline FTS *fts_open(char * const *path_argv, int options, void *compar)
++{
++    (void)path_argv;
++    (void)options;
++    (void)compar;
++    errno = ENOSYS;
++    return 0;
++}
++
++static inline FTSENT *fts_read(FTS *ftsp)
++{
++    (void)ftsp;
++    errno = ENOSYS;
++    return 0;
++}
++
++static inline FTSENT *fts_children(FTS *ftsp, int options)
++{
++    (void)ftsp;
++    (void)options;
++    errno = ENOSYS;
++    return 0;
++}
++
++static inline int fts_set(FTS *ftsp, FTSENT *f, int options)
++{
++    (void)ftsp;
++    (void)f;
++    (void)options;
++    errno = ENOSYS;
++    return -1;
++}
++
++static inline int fts_close(FTS *ftsp)
++{
++    (void)ftsp;
++    errno = ENOSYS;
++    return -1;
++}
++
++#endif

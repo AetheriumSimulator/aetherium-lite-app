@@ -1,0 +1,19 @@
+{
+  "module": {
+    "name": "proton",
+    "type": "shared",
+    "description": "$string:module_desc",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "pages": "$profile:main_pages",
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      }
+    ]
+  }
+}

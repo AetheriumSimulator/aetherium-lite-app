@@ -1,0 +1,25 @@
+diff --git a/src/libtools/threads.c b/src/libtools/threads.c
+index 2737c9b..711c0c9 100644
+--- a/src/libtools/threads.c
++++ b/src/libtools/threads.c
+@@ -41,14 +41,20 @@ static _Atomic int g_active_emu_workers = 0;
+ typedef void (*vFppp_t)(void*, void*, void*);
+ typedef void (*vFpi_t)(void*, int);
+ typedef int (*iFppip_t)(void*, void*, int, void*);
++#ifdef BOX64_HMOS
++typedef int (*iFli_t)(pthread_t, int);
++#else
+ typedef int (*iFli_t)(long unsigned int, int);
++#endif
+ typedef struct emuthread_s emuthread_t;
+
+ static vFppp_t real_pthread_cleanup_push_defer = NULL;
+ static vFpi_t real_pthread_cleanup_pop_restore = NULL;
+ static iFppip_t real_pthread_cond_clockwait = NULL;
++#ifndef ANDROID
+ void _pthread_cleanup_push(void* buffer, void* routine, void* arg);	// declare hidden functions
+ void _pthread_cleanup_pop(void* buffer, int exec);
++#endif
+ // with glibc 2.34+, pthread_kill changed behaviour and might break some program, so using old version if possible
+ // it will be pthread_kill@GLIBC_2.17 on aarch64, but it's GLIBC_2.2.5 on x86_64
+ static iFli_t real_phtread_kill_old = NULL;

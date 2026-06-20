@@ -1,0 +1,53 @@
+diff --git a/src/wrapped/wrappedlibc.c b/src/wrapped/wrappedlibc.c
+index d5cfd0e..33612e6 100644
+--- a/src/wrapped/wrappedlibc.c
++++ b/src/wrapped/wrappedlibc.c
+@@ -154,6 +154,19 @@ typedef void* (*pFpip_t)(void*, int, void*);
+
+ #define ADDED_FUNCTIONS() \
+
++#ifdef BOX64_HMOS
++#undef fstat64
++#undef lstat64
++#undef stat64
++#undef fopen64
++#undef ftw64
++#undef open64
++#undef fstatat64
++#undef nftw64
++#undef scandir64
++#undef mmap64
++#endif
++
+ #include "generated/wrappedlibctypes.h"
+
+ EXPORT uintptr_t my_error_print_progname = 0;
+@@ -180,6 +193,19 @@ static void my_wrap_error_print_progname(void)
+
+ #include "wrappercallback.h"
+
++#ifdef BOX64_HMOS
++#define fstat64 fstat
++#define lstat64 lstat
++#define stat64 stat
++#define fopen64 fopen
++#define ftw64 ftw
++#define open64 open
++#define fstatat64 fstatat
++#define nftw64 nftw
++#define scandir64 scandir
++#define mmap64 mmap
++#endif
++
+ static int regs_abi[] = {_DI, _SI, _DX, _CX, _R8, _R9};
+ void* getVargN(x64emu_t *emu, int n)
+ {
+@@ -4054,7 +4080,7 @@ EXPORT void my_mcount(void* frompc, void* selfpc)
+ }
+ #endif
+
+-#ifndef ANDROID
++#if !defined(ANDROID) || defined(BOX64_HMOS)
+ union semun {
+   int              val;    /* Value for SETVAL */
+   struct semid_ds *buf;    /* Buffer for IPC_STAT, IPC_SET */

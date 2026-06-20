@@ -1,6 +1,7 @@
 {
   "modelVersion": "6.1.0",
-  "description": "Please describe the basic information.",
+  "description": "Aetherium Lite HarmonyOS Wine shell.",
+  "license": "MIT",
   "dependencies": {
   },
   "devDependencies": {

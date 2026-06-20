@@ -1,0 +1,15 @@
+{
+  "name": "proton",
+  "version": "0.1.0",
+  "description": "Aetherium Lite HarmonyOS Proton/Wine bridge HSP source.",
+  "main": "src/main/ets/Index.ets",
+  "types": "./src/main/ets/Index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "libproton.so": "file:./src/main/cpp/types/libproton"
+  },
+  "nativeModule": {
+    "name": "proton",
+    "library": "libproton.so"
+  }
+}

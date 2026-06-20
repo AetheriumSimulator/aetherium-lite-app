@@ -1,17 +1,35 @@
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import * as Proton from 'proton';
+import { setAutoStageRuntime } from '../AutoStage';
 
 const DOMAIN = 0x0000;
+
+function wantBoolean(want: Want, key: string): boolean {
+  const parameters = want.parameters
+  if (!parameters) {
+    return false
+  }
+  const value = parameters[key]
+  return value === true || value === 'true'
+}
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+      Proton.configureHostContext(this.context);
+      setAutoStageRuntime(wantBoolean(want, 'autoStageRuntime'));
     } catch (err) {
       hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
     }
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    setAutoStageRuntime(wantBoolean(want, 'autoStageRuntime'));
+    Proton.configureHostContext(this.context);
   }
 
   onDestroy(): void {

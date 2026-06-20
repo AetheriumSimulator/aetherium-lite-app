@@ -1,0 +1,28 @@
+diff --git a/src/include/hmos_compat.h b/src/include/hmos_compat.h
+new file mode 100644
+index 0000000..6b8dca5
+--- /dev/null
++++ b/src/include/hmos_compat.h
+@@ -0,0 +1,21 @@
++#ifndef BOX64_HMOS_COMPAT_H
++#define BOX64_HMOS_COMPAT_H
++
++#define BOX64_HMOS 1
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
++#include <pthread.h>
++#include <signal.h>
++
++#ifndef PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP
++#define PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP PTHREAD_MUTEX_INITIALIZER
++#endif
++
++#ifndef __DEFINED_sigset64_t
++typedef sigset_t sigset64_t;
++#define __DEFINED_sigset64_t
++#endif
++
++#endif

@@ -1,0 +1,1 @@
+Win32 smoke-test binaries are generated locally by scripts/proton-runtime/build_win32_smoke.sh.
