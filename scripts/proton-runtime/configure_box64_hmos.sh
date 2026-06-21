@@ -18,9 +18,11 @@ fi
 
 if [[ ! -d "${BOX64_SRC}/src" ]]; then
   printf '[box64-hmos] missing Box64 source: %s\n' "${BOX64_SRC}" >&2
+  printf '[box64-hmos] run scripts/proton-runtime/bootstrap_runtime_sources.sh first\n' >&2
   exit 1
 fi
 
+"${ROOT_DIR}/scripts/proton-runtime/ensure_runtime_sources.sh" box64
 "${ROOT_DIR}/scripts/proton-runtime/apply_hmos_patches.sh"
 
 mkdir -p "${BUILD_DIR}" "${INSTALL_DIR}"

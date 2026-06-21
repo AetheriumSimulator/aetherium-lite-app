@@ -12,6 +12,9 @@ PROTON_RUNTIME_MANIFEST="${recipe_dir}/third_party/proton-runtime/manifest.json"
 PROTON_RUNTIME_SOURCE_PATCH_DIR="${recipe_dir}/third_party/proton-runtime/source-patches" \
   "${SCRIPT_DIR}/apply_corresponding_source_patches.sh"
 
+PROTON_RUNTIME_SOURCE_PATCH_DIR="${recipe_dir}/third_party/proton-runtime/source-patches" \
+  "${SCRIPT_DIR}/ensure_runtime_sources.sh" all
+
 PROTON_RUNTIME_LICENSE_DIR="${recipe_dir}/LICENSES" \
   "${SCRIPT_DIR}/audit_licenses.sh"
 

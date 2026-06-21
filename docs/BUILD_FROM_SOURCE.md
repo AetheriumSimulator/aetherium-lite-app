@@ -60,6 +60,17 @@ PROTON_RUNTIME_FETCH_SUBMODULES=1 scripts/proton-runtime/bootstrap_runtime_sourc
 scripts/proton-runtime/fetch_sources.sh
 ```
 
+注意两个容易误会的文件：
+
+- `third_party/proton-runtime/src/box64/src/wrapped/wrappedlibc.c` 是 Box64 上游源码，只有跑完 `fetch_sources.sh` 或 `bootstrap_runtime_sources.sh` 才会出现。
+- `third_party/proton-runtime/src/box64/src/hmos_inprocess.c` 是 Aetherium 对 Box64 的 HMOS in-process 入口，不在 Box64 上游，跑 `bootstrap_runtime_sources.sh` 后由 runtime recipe 仓库里的 `source-patches/box64/0001-hmos-local-working-tree.patch` 生成。
+
+如果已经拉了上游源码但 HMOS patch 结果不完整，可以单独补一次：
+
+```bash
+scripts/proton-runtime/ensure_runtime_sources.sh box64
+```
+
 ## Build Runtime Payload
 
 Box64 in-process payload：

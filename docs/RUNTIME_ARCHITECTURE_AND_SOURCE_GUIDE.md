@@ -101,6 +101,15 @@ third_party/proton-runtime/src/vkd3d-proton
 
 这些目录被 `.gitignore` 忽略，属于本地 checkout，不会提交到 App 仓库。
 
+这里有一个很重要的对应关系：
+
+- `src/box64/src/wrapped/wrappedlibc.c` 来自 Box64 上游 checkout，本来就不在 App 仓库里。
+- `src/box64/src/hmos_inprocess.c` 是 Aetherium 的 Box64 source patch 新增文件，也不在 App 仓库里直接提交。
+- `scripts/proton-runtime/bootstrap_runtime_sources.sh` 会从 runtime recipe 仓库同步 `source-patches`，再把这些 patch 应用到本地上游 checkout。
+- `scripts/proton-runtime/ensure_runtime_sources.sh all` 可以检查并补齐这些 HMOS 对应源码；如果缺 patch，它会先尝试同步 runtime recipe。
+
+所以 clone `aetherium-lite-app` 以后看到 `third_party/proton-runtime/src` 下面只有占位文件是正常的，不是源码丢了。真正的完整源码树是 fetch upstream + apply Aetherium source patches 之后生成的。
+
 ## 这些上游源码自带 LICENSE 吗
 
 是的。当前本地验证到的顶层 license/notice 文件包括：
