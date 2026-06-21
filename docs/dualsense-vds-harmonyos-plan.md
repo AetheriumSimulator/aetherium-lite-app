@@ -268,6 +268,6 @@ Tiny Game status:
 Run after unlock:
 
 1. Start:
-   `hdc -t <target> shell aa start -a EntryAbility -b com.caidingding233.genohinimbact`
+   `hdc -t <target> shell aa start -a WineFullWindowsDesktopExperienceAbility -b com.caidingding233.genohinimbact`
 2. Tap `启动 Tiny Game`.
 3. Expected next result: UI remains alive and reports child exit/crash status.

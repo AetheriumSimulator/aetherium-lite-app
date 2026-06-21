@@ -5,11 +5,11 @@
       "value": "module description"
     },
     {
-      "name": "EntryAbility_desc",
-      "value": "description"
+      "name": "app_desc",
+      "value": "Aetherium Lite Wine desktop"
     },
     {
-      "name": "EntryAbility_label",
+      "name": "app_label",
       "value": "给脑壳一棒"
     }
   ]
